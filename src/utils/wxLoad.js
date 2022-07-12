@@ -43,9 +43,10 @@ export function okload(to, next) {
         code
       }).then(res => {
         setToken(res.data.token)
-        window.location.replace(
-          window.location.origin + window.location.pathname + id ? '?id=' + id : '' + page ? '&page=' + page : ''
-        )
+        window.location.replace(window.location.origin + window.location.pathname)
+        // window.location.replace(
+        //   window.location.origin + window.location.pathname + id ? '?id=' + id : '' + page ? '&page=' + page : ''
+        // )
       })
     } else {
       UrlCode()

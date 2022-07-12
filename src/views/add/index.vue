@@ -1,6 +1,6 @@
 <template>
   <div class="addpage">
-    <div class="title">上传天空之橙图片</div>
+    <div class="title">天空之橙打卡</div>
     <!-- <div class="desc">
       <van-field v-model="message" rows="4" autosize type="textarea" placeholder="请输入" />
     </div> -->
@@ -19,7 +19,7 @@
       <p class="tag">* 最多上传9张图片</p>
       <van-button
         type="primary"
-        color="#856A63"
+        color="#333"
         :disabled="fileList.length <= 0 || disabled"
         round
         block
@@ -50,17 +50,41 @@ export default {
       }
       let ypinglist = imglist.map(item => item.url)
       subImg({ imgs: ypinglist }).then(res => {
-        this.$toast.success('打卡成功')
+        this.$toast.success('打卡成功！')
         this.disabled = true
         setTimeout(() => {
-          this.$router.push('/')
+          this.$router.replace('/')
         }, 1500)
       })
     },
     afterRead(file) {
+      console.log(file)
+      if (Array.isArray(file)) {
+        file.forEach(item => {
+          this.upFile(item)
+        })
+        return
+        let promisearr = []
+        file.forEach(item => {
+          let fromddate = new FormData()
+          fromddate.append('file', item.file)
+          promisearr.push(this.upFile(fromddate))
+        })
+        console.log(promisearr)
+        // new Promise.all(promisearr)
+        //   .then(res => {
+        //     console.log('allSettled', res)
+        //   })
+        //   .catch(err => {
+        //     console.log('allSettled errerr', err)
+        //   })
+      } else {
+        this.upFile(file)
+      }
+    },
+    upFile(file) {
       file.status = 'uploading'
       file.message = '上传中...'
-      console.log(file)
       let fromddate = new FormData()
       fromddate.append('file', file.file)
       upImage(fromddate)
@@ -76,10 +100,6 @@ export default {
           file.message = '上传失败'
           console.log(this.fileList)
         })
-      // setTimeout(() => {
-      //   file.status = 'failed'
-      //   file.message = '上传失败'
-      // }, 1000)
     }
   }
 }
@@ -110,7 +130,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(1.6px);
+    filter: blur(0.8px);
     background: #d2c8c5 url('../../assets/home-bg.jpg') no-repeat;
     background-size: 100%;
     z-index: -2;
@@ -128,7 +148,7 @@ export default {
     // padding: 0 10px;
     padding-left: 14px;
     margin-top: 20px;
-    min-height: 20%;
+    min-height: 50%;
   }
   .button {
     padding: 20px 90px;

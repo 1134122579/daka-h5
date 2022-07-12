@@ -25,7 +25,7 @@ service.interceptors.request.use(
     }
 
     if (getToken()) {
-      config.headers['token'] = getToken()
+      config.headers['access-user-token'] = getToken()
     }
     return config
   },

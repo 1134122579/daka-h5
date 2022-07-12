@@ -40,7 +40,7 @@ const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
 module.exports = {
   // publicPath: process.env.BASE_URL,
   // publicPath: './', // 署应用包时的基本 URL。 vue-router hash 模式使用
-  // publicPath: '/starh5', //署应用包时的基本 URL。  vue-router history模式使用
+  publicPath: '/dk', //署应用包时的基本 URL。  vue-router history模式使用
   outputDir: 'dist', //  生产环境构建文件的目录
   assetsDir: 'static', //  outputDir的静态资源(js、css、img、fonts)目录
   lintOnSave: !IS_PROD,
@@ -56,7 +56,7 @@ module.exports = {
     proxy: {
       // 配置跨域
       '/wapi': {
-        target: 'https://book.skyorange.cn//api/v1',
+        target: 'https://book.skyorange.cn/api/v1',
         // ws:true,
         changOrigin: true,
         // logLevel: 'debug',
