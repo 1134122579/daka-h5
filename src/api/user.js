@@ -20,12 +20,11 @@ export function wxlogin(data) {
 }
 
 // 用户信息 post 方法
-export function getUserInfo(data) {
+export function getuserinfo(data) {
   return request({
-    url: api.UserInfo,
-    method: 'post',
-    data,
-    hideloading: true
+    url: api.getuserinfo,
+    method: 'get',
+    data
   })
 }
 

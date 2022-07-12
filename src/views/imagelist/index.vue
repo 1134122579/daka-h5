@@ -232,8 +232,8 @@ export default {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background: #767676;
-    box-shadow: 0 0 8px #767676;
+    background: #333;
+    box-shadow: 0 0 8px #333;
   }
 }
 </style>

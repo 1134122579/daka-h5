@@ -5,11 +5,17 @@
       <p>一个「自然、放松」的天然氧吧将为你守候~</p>
     </div>
     <div class="button" @click="goadd">立即打卡</div>
+    <div class="button-bottom" @click="goimage">
+      <van-icon name="photo-o" size="20" color="#fff" />
+    </div>
   </div>
 </template>
 <script>
 export default {
   methods: {
+    goimage() {
+      this.$router.push('/imagelist')
+    },
     goadd() {
       this.$router.push('/add')
     }
@@ -65,6 +71,20 @@ export default {
     border: 1px solid #333;
     border-radius: 4px;
     box-shadow: 0 0 28px #787878;
+  }
+  .button-bottom {
+    position: fixed;
+    z-index: 2;
+    bottom: 60px;
+    right: 23px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #333;
+    box-shadow: 0 0 8px #333;
   }
 }
 </style>

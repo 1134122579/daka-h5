@@ -15,7 +15,38 @@
         name="file"
       />
     </div>
-    <div class="buttonupload">
+    <div class="userinfo">
+      <van-field
+        v-model="username"
+        name="用户名"
+        label="用户名"
+        required
+        placeholder="用户名"
+        :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+        v-model="mobile"
+        name="手机号"
+        label="手机号"
+        required
+        placeholder="手机号"
+        :rules="[{ required: true, message: '请填写手机号' }]"
+      />
+      <div class="buttonupload">
+        <p class="tag">* 最多上传9张图片</p>
+        <van-button
+          type="primary"
+          color="#333"
+          :disabled="fileList.length <= 0 || disabled"
+          round
+          block
+          size="small"
+          @click="onsub"
+          >立即提交</van-button
+        >
+      </div>
+    </div>
+    <!-- <div class="buttonupload">
       <p class="tag">* 最多上传9张图片</p>
       <van-button
         type="primary"
@@ -24,26 +55,43 @@
         round
         block
         size="small"
+        native-type="submit"
         @click="onsub"
         >立即提交</van-button
       >
-    </div>
-    <div class="button" @click="goimage">
+    </div> -->
+    <!-- <div class="button" @click="goimage">
       <van-icon name="photo-o" size="20" color="#fff" />
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
-import { upImage, subImg } from '@/api/user'
+import { upImage, subImg, getuserinfo } from '@/api/user'
 export default {
   data() {
     return {
       maxcount: 9,
       disabled: false,
+      username: '',
+      mobile: '',
       fileList: []
     }
   },
+  created() {
+    this.getUserInfo()
+  },
   methods: {
+    getUserInfo() {
+      getuserinfo().then(res => {
+        console.log(res, '11111111111111111')
+        let { mobile, name } = res.data
+        this.mobile = mobile
+        this.username = name
+      })
+    },
+    onSubmit(values) {
+      console.log('submit', values)
+    },
     goimage() {
       this.$router.push('/imagelist')
     },
@@ -55,7 +103,7 @@ export default {
         return
       }
       let ypinglist = imglist.map(item => item.url)
-      subImg({ imgs: ypinglist }).then(res => {
+      subImg({ imgs: ypinglist, name: this.username, mobile: this.mobile }).then(res => {
         this.$toast.success('打卡成功！')
         this.disabled = true
         setTimeout(() => {
@@ -153,11 +201,19 @@ export default {
     // padding: 0 10px;
     padding-left: 14px;
     margin-top: 20px;
-    min-height: 50%;
+    min-height: 40%;
+  }
+  .userinfo {
+    box-sizing: border-box;
+    margin: 20px 14px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 20px 0;
   }
   .buttonupload {
-    padding: 20px 90px;
+    padding: 20px 40px;
     .tag {
+      margin-bottom: 14px;
       text-align: center;
       color: #ff976a;
     }

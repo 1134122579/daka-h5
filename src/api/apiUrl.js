@@ -1,7 +1,7 @@
 const api = {
   Login: '/user/login',
   wxlogin: '/wxlogin',
-  UserInfo: '/user/userinfo',
+  getuserinfo: '/getUserInfo',
   UserName: '/user/name',
   getAuout: '/getAuout', // 关于我们
   aboutUs: '/aboutUs', // 联系我们

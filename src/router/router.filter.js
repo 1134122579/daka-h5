@@ -3,9 +3,9 @@ import { getUrlKey, okload } from '@/utils/wxLoad.js'
 import { getToken, setToken, removeToken } from '@/utils/loading.js'
 export default function (router) {
   router.beforeEach((to, from, next) => {
-    setToken(
-      'fa8318bf89b4b0a8884cb6769e54ce81144d82d3e4fb8cfc6dbeab5e002739d7a94a75e8af79d3ab943d7bc6107905cb2798abc93679266065af565159bcca81ae6c96b81b5f330cdf2ce727fecaaaed'
-    )
+    // setToken(
+    //   'fa8318bf89b4b0a8884cb6769e54ce81144d82d3e4fb8cfc6dbeab5e002739d7a94a75e8af79d3ab943d7bc6107905cb2798abc93679266065af565159bcca81ae6c96b81b5f330cdf2ce727fecaaaed'
+    // )
     if (!getToken()) {
       okload()
       return
