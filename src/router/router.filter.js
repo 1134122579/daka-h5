@@ -4,9 +4,8 @@ import { getToken, setToken, removeToken } from '@/utils/loading.js'
 export default function (router) {
   router.beforeEach((to, from, next) => {
     setToken(
-      '0fa14b5ddbc4f5e8489c4e57f68269b74d9449a6f0598af6aa651db535ded4cf93ae8422e208b82fcdb138294bfe3e832798abc93679266065af565159bcca81ae6c96b81b5f330cdf2ce727fecaaaed'
+      'fa8318bf89b4b0a8884cb6769e54ce81144d82d3e4fb8cfc6dbeab5e002739d7a94a75e8af79d3ab943d7bc6107905cb2798abc93679266065af565159bcca81ae6c96b81b5f330cdf2ce727fecaaaed'
     )
-    console.log('asdas', getToken())
     if (!getToken()) {
       okload()
       return
@@ -15,7 +14,8 @@ export default function (router) {
       title: '天空之橙城市书房打卡',
       url: location.href,
       desc: '',
-      link: window.location.origin + to.fullPath,
+      // link: location.href,
+      link: 'http://api.skyorange.cn/dk',
       //   link: window.location.origin + window.location.pathname,
       imgUrl: 'http://api.skyorange.cn/logo.jpg'
     }

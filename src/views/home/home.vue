@@ -32,7 +32,7 @@ export default {
     width: 100%;
     height: 100%;
     // filter: blur(1px);
-    background: #dfdfdf url('../../assets/home-bg.jpg') no-repeat;
+    background: #d2c8c5 url('../../assets/home-bg.jpg') no-repeat;
     background-size: 100%;
     z-index: -2;
   }
@@ -58,7 +58,7 @@ export default {
     margin: 0 auto;
     text-align: center;
     padding: 6px 0;
-    margin-top: 40vh;
+    margin-top: 36vh;
     font-size: 14px;
     color: #fff;
     background: #333;

@@ -15,7 +15,7 @@ const api = {
   setVideoPv: '/setVideoPv', // 收藏
   zanVideo: '/zanVideo', // 点赞
   getPyq: '/getPyq', // 点赞
-  getImage: '/getPyqImgs', // 点赞
+  getImage: '/getUserCardImg', // 点赞
   upImage: '/upImage', // 点赞
   subImg: '/subImg', // 点赞
   getShareArticleDetails: '/getPyqDetails', // 点赞

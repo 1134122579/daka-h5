@@ -1,6 +1,6 @@
 <template>
   <div class="addpage">
-    <div class="title">天空之橙打卡</div>
+    <div class="title">天空之橙·城市书房</div>
     <!-- <div class="desc">
       <van-field v-model="message" rows="4" autosize type="textarea" placeholder="请输入" />
     </div> -->
@@ -15,7 +15,7 @@
         name="file"
       />
     </div>
-    <div class="button">
+    <div class="buttonupload">
       <p class="tag">* 最多上传9张图片</p>
       <van-button
         type="primary"
@@ -25,8 +25,11 @@
         block
         size="small"
         @click="onsub"
-        >立即打卡</van-button
+        >立即提交</van-button
       >
+    </div>
+    <div class="button" @click="goimage">
+      <van-icon name="photo-o" size="20" color="#fff" />
     </div>
   </div>
 </template>
@@ -41,6 +44,9 @@ export default {
     }
   },
   methods: {
+    goimage() {
+      this.$router.push('/imagelist')
+    },
     onsub() {
       let imglist = this.fileList
       let iseveryImg = imglist.every(item => item.status == 'success')
@@ -53,7 +59,7 @@ export default {
         this.$toast.success('打卡成功！')
         this.disabled = true
         setTimeout(() => {
-          this.$router.replace('/')
+          this.$router.replace('/imagelist')
         }, 1500)
       })
     },
@@ -107,7 +113,6 @@ export default {
 
 <style lang="scss" scoped>
 .addpage {
-  background: #eeeeee;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -130,8 +135,8 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(0.8px);
-    background: #d2c8c5 url('../../assets/home-bg.jpg') no-repeat;
+    // filter: blur(0.8px);
+    background: #d2c8c5 url('../../assets/add-bg.jpg') no-repeat;
     background-size: 100%;
     z-index: -2;
   }
@@ -150,18 +155,32 @@ export default {
     margin-top: 20px;
     min-height: 50%;
   }
-  .button {
+  .buttonupload {
     padding: 20px 90px;
     .tag {
       text-align: center;
       color: #ff976a;
     }
   }
+  .button {
+    position: fixed;
+    z-index: 2;
+    bottom: 60px;
+    right: 23px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #767676;
+    box-shadow: 0 0 8px #767676;
+  }
 }
 </style>
 <style>
 .van-uploader__upload {
-  background: #eee;
+  background: #fff;
   border-radius: 8px;
 }
 .van-uploader__preview-image {

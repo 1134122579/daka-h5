@@ -1,7 +1,7 @@
 <template>
   <div class="imagelist">
     <div style="height: 40px" id="tabTop"></div>
-    <van-sticky @change="onstickyChange">
+    <!-- <van-sticky @change="onstickyChange">
       <div class="main-content-tab">
         <van-tabs
           v-model="listQuery.label"
@@ -16,7 +16,7 @@
           <van-tab v-for="(item, index) in typelist" :name="item.id" :title="item.name"> </van-tab>
         </van-tabs>
       </div>
-    </van-sticky>
+    </van-sticky> -->
     <div class="content-img">
       <van-list
         v-model="loading"
@@ -32,11 +32,11 @@
         </div>
       </van-list>
     </div>
-    <div class="bottom wow fadeInUp">
+    <!-- <div class="bottom wow fadeInUp">
       <img src="../../assets/bottom-logo.png" alt="" />
       <p>做年轻人喜爱的一切</p>
       <p>有趣的灵魂在这里遇见</p>
-    </div>
+    </div> -->
     <div class="meun">
       <!-- <quick-menu :menu-count="count" :icon-class="icons" :menu-url-list="list"> </quick-menu> -->
     </div>
